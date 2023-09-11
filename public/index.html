@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinterest Clone</title>
-    <link href="./styles/styles.css"  rel="stylesheet" >
-    <script src="./scripts/login.js" ></script>
+    <link href="./styles/styles.css" rel="stylesheet">
+    <script src="./scripts/login.js"></script>
 </head>
+
 <body>
     <header>
         <div class="header-logo">
-            <img src="./icons/pin.png" alt="Pinterest Logo" >
+            <img src="./icons/pin.png" alt="Pinterest Logo">
         </div>
         <nav>
             <ul>
                 <li>About</li>
                 <li>Business</li>
                 <li>Blog</li>
-                <li><button class="btn">Login</button></li>
+                <li><button class="btn" onclick="showLogin()" >Login</button></li>
                 <li><button class="btn">Signup</button></li>
             </ul>
         </nav>
     </header>
-    
-    <div id="show" >
+
+    <div id="show">
         <login-element></login-element>
     </div>
-   
-<script>
-    
-</script>
+
+    <script>
+        const x = document.getElementById('show');
+        x.style.display = 'none'
+        function showLogin() {
+            
+        if (x.style.display === 'none') {
+            x.style.display = 'block'
+        } 
+        }
+       
+    </script>
 
 </body>
-</html>
 
+</html>
