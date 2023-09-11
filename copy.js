@@ -1,2 +1,2 @@
-const fs = require('copyfiles');
-fs.copySync('public', 'build');
+const fs = require('fs-extra');
+fs.copySync('public', './build');
