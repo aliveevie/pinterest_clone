@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node src/app.ts",
-    "build": "tsc",
-    "dev": "nodemon build/app.js"
+    "dev": "nodemon --exec ts-node src/app.ts",
+    "build": "tsc  && node copy.js",
+    "start": "nodemon build/app.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +18,8 @@
     "passport": "^0.6.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
   }
 }
