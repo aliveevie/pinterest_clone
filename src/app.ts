@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
+const db = require('./db/db')
 
 app.use(express.static('public'))
 app.use(urlencoded({ extended: true}));
@@ -12,9 +13,10 @@ app.get('/', (req:Request, res:Response) => {
 });
 
 
-app.post('/login', (req:Request, res:Response) => {
-    console.log(req.body)
-    
+app.post('/login', async (req:Request, res:Response) => {
+    const result = await db.query('SELECT * FROM Users')
+    console.log(result.rows)
+
 });
 
 app.listen(port, () => {
