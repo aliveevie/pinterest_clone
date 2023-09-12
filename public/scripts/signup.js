@@ -1,0 +1,35 @@
+class Sign extends HTMLElement {
+    constructor() {
+        super();
+        // Create a shadow DOM for this custom element
+       
+    }
+
+    connectedCallback() {
+        // Move the HTML content into the shadow DOM
+        this.innerHTML = ` 
+                <div class="login-box">
+                    <a href="#" id="hide" onclick="hideSign()" >X</a>
+                    <img class="logo" src="./icons/pin.png" alt="Pinterest Logo">
+                    <input class="form-input" type="email" placeholder="Email">
+                    <input class="form-input" type="password" placeholder="Create Password">
+                    <input class="form-input" type="password" placeholder="Birthdate">
+                    <button class="login-btn" id="login" >Continue</button>
+                    <p>OR </p>
+                    <div class="social-login">
+                        <a href="#" class="social-btn">Continue with Facebook</a>
+                        <a href="#" class="social-btn">Continue with GitHub</a>
+                        <a href="#" class="social-btn">Continue with Google</a>
+                    </div>
+                </div>
+        `;
+
+        // Now, you can access the elements within the shadow DOM
+    }
+
+  
+}
+
+
+
+customElements.define('signup-element', Sign);

@@ -5,6 +5,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 0;
+    overflow: auto;
 }
 
 header {
@@ -91,6 +92,20 @@ header {
 
 .social-btn:last-child{
     margin-top: 5px;
+}
+
+#hide {
+    position: absolute;
+    font-size: 24px;
+    color: #FF0000; /* Red color for the close button */
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-left: 13%;
+}
+
+#hide:hover {
+    color: #FF5555; /* Change color on hover for visual effect */
 }
 
 @media (max-width: 480px) {

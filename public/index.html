@@ -7,6 +7,7 @@
     <title>Pinterest Clone</title>
     <link href="./styles/styles.css" rel="stylesheet">
     <script src="./scripts/login.js"></script>
+    <script src="./scripts//signup.js" ></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
                 <li>Business</li>
                 <li>Blog</li>
                 <li><button class="btn" onclick="showLogin()" >Login</button></li>
-                <li><button class="btn">Signup</button></li>
+                <li><button class="btn" onclick="showSign()" >Signup</button></li>
             </ul>
         </nav>
     </header>
@@ -29,21 +30,47 @@
         <login-element></login-element>
     </div>
 
+    <div id="signup">
+        <signup-element></signup-element>
+    </div>
+
+    <div id="overlay" class="hidden"></div>
+   
+
     <script>
         const x = document.getElementById('show');
-        x.style.display = 'none'
+        const y = document.getElementById('signup');
+        const z = document.getElementById('overlay')
+
+        x.style.display = 'none';
+        y.style.display = 'none';
+
         function showLogin() {     
         if (x.style.display === 'none') {
+            z.style.display = 'block'
             x.style.display = 'block'
         } 
     }
         
         function hideLogin(){
         if (x.style.display === 'block') {
-            x.style.display = 'none'
+            x.style.display = 'none';
+            z.style.display = 'block'
         }
     }
-       
+
+    
+    function showSign() {     
+        if (y.style.display === 'none') {
+            y.style.display = 'block'
+        } 
+    }
+        
+        function hideSign(){
+        if (y.style.display === 'block') {
+            y.style.display = 'none'
+        }  
+    }
     </script>
 
 </body>
