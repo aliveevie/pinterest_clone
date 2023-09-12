@@ -6,6 +6,7 @@ body {
     align-items: center;
     margin: 0;
     overflow: auto;
+    
 }
 
 header {
@@ -27,7 +28,6 @@ header {
     width: 100%;
     margin-left: 30px;
 }
-
 
 
 .login-box {

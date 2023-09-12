@@ -34,21 +34,21 @@
         <signup-element></signup-element>
     </div>
 
-    <div id="overlay" class="hidden"></div>
+  
    
 
     <script>
         const x = document.getElementById('show');
         const y = document.getElementById('signup');
-        const z = document.getElementById('overlay')
+        document.body.style.overflow = 'auto';
 
         x.style.display = 'none';
         y.style.display = 'none';
 
         function showLogin() {     
         if (x.style.display === 'none') {
-            z.style.display = 'block'
             x.style.display = 'block'
+            document.body.style.overflow = 'hidden';
         } 
     }
         

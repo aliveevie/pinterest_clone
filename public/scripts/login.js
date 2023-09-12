@@ -12,17 +12,18 @@ class Login extends HTMLElement {
                 <div class="login-box">
                     <a href="#" id="hide" onclick="hideLogin()" >X</a>
                     <img class="logo" src="./icons/pin.png" alt="Pinterest Logo">
-                    <input class="form-input" type="email" placeholder="Email">
-                    <input class="form-input" type="password" placeholder="Password">
+                    <form action="/login"  method="post" > 
+                    <input class="form-input" type="email" placeholder="Email" name='email' >
+                    <input class="form-input" type="password" placeholder="Password" name='password' >
                     <button class="login-btn" id="login" >Login</button>
                     <div class="social-login">
                         <a href="#" class="social-btn">Login with Facebook</a>
                         <a href="#" class="social-btn">Login with GitHub</a>
                         <a href="#" class="social-btn">Login with Google</a>
                     </div>
+                    </form>
                 </div>
                
-          
         `;
 
         // Now, you can access the elements within the shadow DOM

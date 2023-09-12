@@ -11,9 +11,10 @@ class Sign extends HTMLElement {
                 <div class="login-box">
                     <a href="#" id="hide" onclick="hideSign()" >X</a>
                     <img class="logo" src="./icons/pin.png" alt="Pinterest Logo">
-                    <input class="form-input" type="email" placeholder="Email">
-                    <input class="form-input" type="password" placeholder="Create Password">
-                    <input class="form-input" type="password" placeholder="Birthdate">
+                    <form method="post" action="/sign">
+                    <input class="form-input" type="email" placeholder="Email" name='email' >
+                    <input class="form-input" type="password" placeholder="Create Password" name='password' >
+                    <input class="form-input" type="password" placeholder="Birthdate" name='birthdate'>
                     <button class="login-btn" id="login" >Continue</button>
                     <p>OR </p>
                     <div class="social-login">
@@ -21,6 +22,7 @@ class Sign extends HTMLElement {
                         <a href="#" class="social-btn">Continue with GitHub</a>
                         <a href="#" class="social-btn">Continue with Google</a>
                     </div>
+                    </form>
                 </div>
         `;
 
