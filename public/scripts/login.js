@@ -15,21 +15,22 @@ class Login extends HTMLElement {
                     <form action="/login"  method="post" > 
                     <input class="form-input" type="email" placeholder="Email" name='email' >
                     <input class="form-input" type="password" placeholder="Password" name='password' >
+                    <div id="error">Invalid Username or Password</div>
                     <button class="login-btn" id="login" >Login</button>
                     <div class="social-login">
                         <a href="#" class="social-btn">Login with Facebook</a>
-                        <a href="#" class="social-btn">Login with GitHub</a>
-                        <a href="#" class="social-btn">Login with Google</a>
+                        <a href="" class="social-btn">Login with GitHub</a>
+                        <a href="/auth/google" class="social-btn">Login with Google</a>
                     </div>
                     </form>
                 </div>
                
         `;
 
-        // Now, you can access the elements within the shadow DOM
+    // Now, you can access the elements within the shadow DOM
+
     }
 
-  
 }
 
 

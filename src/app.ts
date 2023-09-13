@@ -9,6 +9,8 @@ const passport = require('passport');
 import { Strategy as LocalStrategy } from 'passport-local'
 const session = require('express-session');
 
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 app.use(
     session({
       secret: 'abc',
@@ -40,6 +42,32 @@ passport.use(
     )
   );
 
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        callbackURL: 'http://localhost:3000/auth/callback', // Update with your redirect URI
+        scope: [ 'profile' ]
+      },
+      (accessToken: any, refreshToken: any, profile: any, done: (arg0: null, arg1: any) => any) => {
+        // The profile object contains user information from Google
+        // You can save this data to your database or perform other actions here
+        console.log(profile);
+        return done(null, profile);
+      }
+    )
+  );
+
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/auth/callback', passport.authenticate('google', { failureRedirect: '/' }), (req:Request, res:Response) => {
+  // Successful authentication, redirect or respond as needed
+  res.redirect('/dashboard');
+});
+  
+
+
   
   passport.serializeUser(function(user:any, done:any) {
     done(null, user);
@@ -59,23 +87,36 @@ app.get('/', (req:Request, res:Response) => {
 });
 
 
-app.post("/login", passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/fail'
-}));
+app.post("/login", (req:Request, res:Response, next:NextFunction) => {
+    passport.authenticate('local', (err:Error, user:any, info:any) => {
+      if(err){
+        return next(err)
+      }
+
+      if(!user){
+        res.redirect('/home')
+        return
+      }
+
+      req.logIn(user, (err) => {
+        if(err){
+          return next(err);
+        }
+        return res.redirect('/dashboard')
+      });
+    })(req, res, next)
+});
   
   
 
-app.get('/fail', (req:Request, res:Response) => {
-    
-    if(req.isAuthenticated()){
-        return res.send('The request is ok')
-    }else{
-        res.send('There is a failure please!');
-        return
-    }
-    
+app.get('/dashboard', (req:Request, res:Response) => {
+    res.send('Welcome To Dashboad Stay sign in!')
 });
+
+
+app.get('/home', (req:Request, res:Response) => {
+  res.redirect('/')
+})
 
 
 
