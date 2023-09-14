@@ -14,18 +14,16 @@ class Sign extends HTMLElement {
                     <form method="post" action="/sign">
                     <input class="form-input" type="email" placeholder="Email" name='email' >
                     <input class="form-input" type="password" placeholder="Create Password" name='password' >
-                    <input class="form-input" type="password" placeholder="Birthdate" name='birthdate'>
                     <button class="login-btn" id="login" >Continue</button>
                     <p>OR </p>
                     <div class="social-login">
                         <a href="#" class="social-btn">Continue with Facebook</a>
-                        <a href="#" class="social-btn">Continue with GitHub</a>
-                        <a href="#" class="social-btn">Continue with Google</a>
+                        <a href="/auth/github" class="social-btn">Continue with GitHub</a>
+                        <a href="/auth/google" class="social-btn">Continue with Google</a>
                     </div>
                     </form>
                 </div>
         `;
-
         // Now, you can access the elements within the shadow DOM
     }
 

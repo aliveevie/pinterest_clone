@@ -77,8 +77,19 @@ passport.use(
       callbackURL: 'http://localhost:3000/auth/github/callback'
     }, 
     
-    function(accessToken:any, refreshToken:any, profile: any, done: (arg0:null, arg1: any ) => any){
-      console.log(profile._json);
+    async function(accessToken:any, refreshToken:any, profile: any, done: (arg0:null, arg1: any ) => any){
+      
+      const { id, username, provider } = profile
+     
+      const result = await db.query('SELECT userid FROM Social_Users WHERE username=$1', 
+      [username]);
+      
+      if(result.rows.length === 0){
+        const insert = await db.query('INSERT INTO Social_Users(username, id, provider) VALUES($1, $2, $3)', 
+        [username, id, provider])
+      }
+
+
       return done(null, profile)
     }
     
@@ -149,6 +160,25 @@ app.get('/home', (req:Request, res:Response) => {
   res.redirect('/')
 })
 
+
+app.post('/sign', async (req:Request, res:Response) => {
+
+    const { email, password } = req.body;
+
+    const result = await db.query('SELECT userid FROM Users WHERE email=$1', 
+    [email])
+
+    if(result.rows.length===0){
+      const insert = await db.query('INSERT INTO Users(email, password) VALUES($1, $2)', 
+      [email, password])
+      res.redirect('/dashboard')
+      return
+    }else{
+      res.redirect('/');
+      return;
+    }
+
+});
 
 
 app.listen(port, () => {
