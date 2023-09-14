@@ -152,7 +152,7 @@ app.post("/login", (req:Request, res:Response, next:NextFunction) => {
   
 
 app.get('/dashboard', (req:Request, res:Response) => {
-    res.send('Welcome To Dashboad Stay sign in!')
+    res.sendFile(path.join(__dirname, '..', 'public', 'views', 'dashboard.html'))
 });
 
 
@@ -179,6 +179,11 @@ app.post('/sign', async (req:Request, res:Response) => {
     }
 
 });
+
+app.get('/logout', (req:Request, res:Response) => {
+   req.logOut
+   res.redirect('/')
+})
 
 
 app.listen(port, () => {
