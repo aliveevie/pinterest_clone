@@ -10,6 +10,7 @@ import { Strategy as LocalStrategy } from 'passport-local'
 const session = require('express-session');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GithubStrategy = require('passport-github2').Strategy;
 
 app.use(
     session({
@@ -59,11 +60,31 @@ passport.use(
     )
   );
 
+  passport.use(
+    new GithubStrategy({
+      clientID: process.env.GITHUB_CLIENT,
+      clientSecret: process.env.GITHUB_SECRET,
+      callbackURL: 'http://localhost:3000/auth/github/callback'
+    }, 
+    
+    function(accessToken:any, refreshToken:any, profile: any, done: (arg0:null, arg1: any ) => any){
+      console.log(profile);
+      return done(null, profile)
+    }
+    
+    )
+  )
+
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/auth/callback', passport.authenticate('google', { failureRedirect: '/' }), (req:Request, res:Response) => {
   // Successful authentication, redirect or respond as needed
   res.redirect('/dashboard');
+});
+
+app.get('/auth/github', passport.authenticate('github'));
+app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req:Request, res:Response) => {
+    res.redirect('/dashboard')
 });
   
 
