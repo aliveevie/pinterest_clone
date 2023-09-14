@@ -19,7 +19,7 @@ class Login extends HTMLElement {
                     <button class="login-btn" id="login" >Login</button>
                     <div class="social-login">
                         <a href="#" class="social-btn">Login with Facebook</a>
-                        <a href="" class="social-btn">Login with GitHub</a>
+                        <a href="/auth/github" class="social-btn">Login with GitHub</a>
                         <a href="/auth/google" class="social-btn">Login with Google</a>
                     </div>
                     </form>
