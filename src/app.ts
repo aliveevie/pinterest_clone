@@ -51,10 +51,20 @@ passport.use(
         callbackURL: 'http://localhost:3000/auth/callback', // Update with your redirect URI
         scope: [ 'profile' ]
       },
-      (accessToken: any, refreshToken: any, profile: any, done: (arg0: null, arg1: any) => any) => {
+      async (accessToken: any, refreshToken: any, profile: any, done: (arg0: null, arg1: any) => any) => {
         // The profile object contains user information from Google
         // You can save this data to your database or perform other actions here
-        console.log(profile);
+        const { id } = profile
+        const username = profile.emails[0].value;
+        const provider = 'google' 
+        const result = await db.query('SELECT userid FROM Social_Users WHERE username=$1', 
+        [username]);
+        
+        if(result.rows.length === 0){
+          const insert = await db.query('INSERT INTO Social_Users(username, id, provider) VALUES($1, $2, $3)', 
+          [username, id, provider])
+        }
+        
         return done(null, profile);
       }
     )
@@ -68,7 +78,7 @@ passport.use(
     }, 
     
     function(accessToken:any, refreshToken:any, profile: any, done: (arg0:null, arg1: any ) => any){
-      console.log(profile);
+      console.log(profile._json);
       return done(null, profile)
     }
     
