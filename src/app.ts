@@ -199,11 +199,59 @@ app.get('/:username', (req:Request, res:Response) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'views', 'user.html'))
 });
 
+app.get('/dashboard/setting', (req:Request, res:Response) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'views', 'setting.html'))
+})
 
 app.get('/user/logout', (req:Request, res:Response) => {
    req.logOut
    res.redirect('/')
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.listen(port, () => {
