@@ -54,15 +54,21 @@ passport.use(
       async (accessToken: any, refreshToken: any, profile: any, done: (arg0: null, arg1: any) => any) => {
         // The profile object contains user information from Google
         // You can save this data to your database or perform other actions here
+       
         const { id } = profile
         const username = profile.emails[0].value;
-        const provider = 'google' 
-        const result = await db.query('SELECT userid FROM Social_Users WHERE username=$1', 
+        const provider = 'google'
+        const img = profile.photos[0].value 
+        const result = await db.query('SELECT * FROM Social_Users WHERE username=$1', 
         [username]);
         
         if(result.rows.length === 0){
-          const insert = await db.query('INSERT INTO Social_Users(username, id, provider) VALUES($1, $2, $3)', 
-          [username, id, provider])
+          const insert = await db.query('INSERT INTO Social_Users(username, id, provider, picture) VALUES($1, $2, $3, $4)', 
+          [username, id, provider, img])
+        }else{
+          app.get('/data', (req:Request, res:Response) =>  {
+            res.json(result.rows[0])
+          })
         }
         
         return done(null, profile);
@@ -81,9 +87,9 @@ passport.use(
       
       const { id, username, provider } = profile
      
-      const result = await db.query('SELECT userid FROM Social_Users WHERE username=$1', 
+      const result = await db.query('SELECT * FROM Social_Users WHERE username=$1', 
       [username]);
-      
+      console.log(profile)
       if(result.rows.length === 0){
         const insert = await db.query('INSERT INTO Social_Users(username, id, provider) VALUES($1, $2, $3)', 
         [username, id, provider])
@@ -144,6 +150,7 @@ app.post("/login", (req:Request, res:Response, next:NextFunction) => {
         if(err){
           return next(err);
         }
+       
         return res.redirect('/dashboard')
       });
     })(req, res, next)
@@ -183,7 +190,7 @@ app.post('/sign', async (req:Request, res:Response) => {
 app.get('/logout', (req:Request, res:Response) => {
    req.logOut
    res.redirect('/')
-})
+});
 
 
 app.listen(port, () => {
