@@ -52,10 +52,33 @@
     </header>
     <div></div>
 
-    <main>
-        <img  id="pic" alt="Profile Picture" class="pic" >
-        <h3>Hello Settings!</h3>
-    </main>
+        <div class="side-bar" >
+            <div class="side-menu">
+                <a href="#edit-profile"><h3>Edit Profile</h3></a>
+                <a href="#"><h3>Account Management</h3></a>
+                <a href="#"><h3>Profile Visibility</h3></a>
+                <a href="#"><h3>Tune your Home Feed</h3></a>
+                <a href="#"><h3>Claim your accounts</h3></a>
+                <a href="#"><h3>Social Permissions</h3></a>
+                <a href="#"><h3>Notifications</h3></a>
+                <a href="#"><h3>Privacy and Data</h3></a>
+                <a href="#"><h3>Security</h3></a>
+                <a href="#"><h3>Branded Content</h3></a>
+            </div>
+            <h3 id="edit-profile">Edit Profile</h3>
+            <p>
+                Keep your personal details private. 
+                Information you add here is visible to any who can view your profile.
+            </p>
+            <div class="profile-details" >
+                <img  alt="picture" /> 
+                <button>Change</button>
+            </div>
+            <form action="/info" method="post" >
+                
+            </form>
+           
+        </div>
 
 <script>
     async function fetchData(){
