@@ -43,9 +43,9 @@
                     <img  id="profile" alt="Profile Picture">
                 </div>
                 <div class="profile-dropdown">
-                    <a href="#"><i class="fas fa-user"></i> Account</a>
+                    <a id = 'account'><i class="fas fa-user"></i> Account</a>
                     <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                    <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -56,8 +56,10 @@
         const response = await fetch('/data')
         const data = await response.json()
         const pro = document.getElementById('profile');
-        console.log(data.picture)
+        const acct = document.getElementById('account');
+
         pro.src = data.picture
+        acct.href = data.username
     }
 
     fetchData();

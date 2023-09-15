@@ -61,6 +61,8 @@ passport.use(
         const img = profile.photos[0].value 
         const result = await db.query('SELECT * FROM Social_Users WHERE username=$1', 
         [username]);
+        const firstname = profile.name.givenName
+        const lastname = profile.name.familyName
         
         if(result.rows.length === 0){
           const insert = await db.query('INSERT INTO Social_Users(username, id, provider, picture) VALUES($1, $2, $3, $4)', 
@@ -91,7 +93,7 @@ passport.use(
       const result = await db.query('SELECT * FROM Social_Users WHERE username=$1', 
       [username]);
       
-      
+
       if(result.rows.length === 0){
         const insert = await db.query('INSERT INTO Social_Users(username, id, provider, picture) VALUES($1, $2, $3, $4)', 
         [username, id, provider, picture])
@@ -193,7 +195,13 @@ app.post('/sign', async (req:Request, res:Response) => {
 
 });
 
-app.get('/logout', (req:Request, res:Response) => {
+app.get('/:username', (req:Request, res:Response) => {
+    const username = req.body.username
+    res.send('Hello User how are you!')
+});
+
+
+app.get('/user/logout', (req:Request, res:Response) => {
    req.logOut
    res.redirect('/')
 });
