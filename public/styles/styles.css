@@ -313,3 +313,75 @@ nav li {
     }
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the profile picture */
+.pic {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style the username */
+#user {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Style the "following" text */
+#follow {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Style the buttons */
+#buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+#buttons button {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style the main menu links */
+.main-menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 10px 0;
+}
+
+.main-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Style the h3 elements within the main menu */
+.main-menu h3 {
+    margin: 0;
+    padding: 0;
+}

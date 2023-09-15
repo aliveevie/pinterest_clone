@@ -50,6 +50,23 @@
             </div>
         </div>
     </header>
+    <div></div>
+
+    <main>
+        <img  id="pic" alt="Profile Picture" class="pic" >
+        <div id="name" >
+        </div>
+        <p id="user" ></p>
+        <p id="follow" >0 following </p>
+        <div id="buttons" >
+            <button>Share</button>
+            <button>Edit</button>
+        </div>
+        <div class="main-menu" >
+        <a href="#"><h3>Created</h3></a>
+        <a href="#"><h3>Saved</h3></a>
+        </div>
+    </main>
 
 <script>
     async function fetchData(){
@@ -57,9 +74,20 @@
         const data = await response.json()
         const pro = document.getElementById('profile');
         const acct = document.getElementById('account');
+        const firstname = data.firstname
+        const lastname = data.lastname
+        const user = data.username
 
-        pro.src = data.picture
-        acct.href = data.username
+        const img = document.getElementById('pic');
+        img.src = data.picture
+        const name = document.getElementById('name');
+        name.textContent = firstname + " " + lastname;
+        const username = document.getElementById('user');
+        username.textContent = '@' + user;
+
+        pro.src = data.picture;
+        acct.href = data.username;
+
     }
 
     fetchData();

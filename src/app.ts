@@ -65,10 +65,10 @@ passport.use(
         const lastname = profile.name.familyName
         
         if(result.rows.length === 0){
-          const insert = await db.query('INSERT INTO Social_Users(username, id, provider, picture) VALUES($1, $2, $3, $4)', 
-          [username, id, provider, img])
+          const insert = await db.query('INSERT INTO Social_Users(username, id, provider, picture, firstname, lastname) VALUES($1, $2, $3, $4, $5, $6)', 
+          [username, id, provider, img, firstname, lastname])
         }else{
-          app.get('/data', (req:Request, res:Response) =>  {
+          app.get('/user/data', (req:Request, res:Response) =>  {
             res.json(result.rows[0])
           })
         }
@@ -196,8 +196,7 @@ app.post('/sign', async (req:Request, res:Response) => {
 });
 
 app.get('/:username', (req:Request, res:Response) => {
-    const username = req.body.username
-    res.send('Hello User how are you!')
+  res.sendFile(path.join(__dirname, '..', 'public', 'views', 'user.html'))
 });
 
 
