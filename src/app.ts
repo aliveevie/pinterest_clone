@@ -86,13 +86,19 @@ passport.use(
     async function(accessToken:any, refreshToken:any, profile: any, done: (arg0:null, arg1: any ) => any){
       
       const { id, username, provider } = profile
+      const picture = profile.photos[0].value
      
       const result = await db.query('SELECT * FROM Social_Users WHERE username=$1', 
       [username]);
-      console.log(profile)
+      
+      
       if(result.rows.length === 0){
-        const insert = await db.query('INSERT INTO Social_Users(username, id, provider) VALUES($1, $2, $3)', 
-        [username, id, provider])
+        const insert = await db.query('INSERT INTO Social_Users(username, id, provider, picture) VALUES($1, $2, $3, $4)', 
+        [username, id, provider, picture])
+      }else{
+        app.get('/data', (req:Request, res:Response) =>  {
+          res.json(result.rows[0])
+        })
       }
 
 
