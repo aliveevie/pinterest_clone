@@ -1,12 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: 0;
+    padding: 0;
     overflow: auto;
-    
 }
 
 header {
@@ -384,4 +381,65 @@ main {
 .main-menu h3 {
     margin: 0;
     padding: 0;
+}
+
+
+
+/* Sidebar menu styles */
+.side-bar {
+    display: flex;
+     /* Change to column layout for smaller screens */
+}
+
+.side-menu {
+    color: black;
+    width: 200px;
+    padding: 20px;
+}
+
+.side-menu a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Content styles */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Initially hide all content sections */
+
+
+/* Show the active content section */
+
+
+/* Active link style */
+.side-menu a.active {
+    font-weight: bold;
+}
+
+/* Profile picture styling */
+.profile-details img {
+    max-width: 100px;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .side-bar {
+        flex-direction: row; /* Switch back to row layout for larger screens */
+    }
+
+    .side-menu {
+        width: auto;
+        padding: 10px;
+    }
+
+    .content {
+        padding: 10px;
+    }
 }
