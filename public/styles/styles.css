@@ -443,3 +443,89 @@ main {
         padding: 10px;
     }
 }
+
+.container {
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.profile-details {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center; /* Center the button vertically */
+}
+
+.profile-details img {
+    border-radius: 50%;
+    max-width: 100px; /* Adjust the maximum width as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.profile-details button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    
+    margin-left: 10px; /* Add some spacing between the image and button */
+    padding: 10px 20px; /* Adjust padding as needed for appearance */
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="url"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+button[type="reset"],
+button[type="submit"] {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="reset"] {
+    background-color: #ccc;
+}
+
+button[type="reset"]:hover {
+    background-color: #aaa;
+}
+
+button[type="submit"]:hover {
+    background-color: #0057a3;
+}
