@@ -11,6 +11,7 @@ const session = require('express-session');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github2').Strategy;
+const multer = require('multer');
 
 app.use(
     session({
@@ -201,6 +202,10 @@ app.get('/:username', (req:Request, res:Response) => {
 
 app.get('/dashboard/setting', (req:Request, res:Response) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'views', 'setting.html'))
+});
+
+app.post('/profile', (req:Request, res:Response) => {
+   
 })
 
 app.get('/user/logout', (req:Request, res:Response) => {
